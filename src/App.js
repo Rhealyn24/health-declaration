@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
-function App() {
+
+import Navbar from './components/navbar.component';
+import HealthList from './components/health-list.component';
+import EditHealth from './components/edit-health.component';
+import CreateHealth from './components/create-health.component';
+
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+       <Navbar/>
+       <br/>
+       <Routes>
+      <Route path="/" exact element={<HealthList/>} />
+      <Route path="/edit/:id" element={<EditHealth/>} />
+      <Route path="/create" element={<CreateHealth/>} />
+    </Routes>
+    </BrowserRouter>
+    
   );
 }
 
